@@ -1,0 +1,147 @@
+<!-- AWP_In_Variable Name ='"Data_block_1".CO' -->
+<!-- AWP_In_Variable Name ='"Data_block_1".PV' -->
+<!-- AWP_In_Variable Name ='"Data_block_1".SP' -->
+<!-- AWP_In_Variable Name ='"Data_block_1".Kp' -->
+<!-- AWP_In_Variable Name ='"Data_block_1".Ti' -->
+<!-- AWP_In_Variable Name ='"Data_block_1".Td' -->
+ <!-- AWP_In_Variable Name ='"hmimanon"' -->
+<!-- AWP_In_Variable Name ='"resethmi"' -->
+<!-- AWP_In_Variable Name ='"UPSP"' -->
+<!-- AWP_In_Variable Name ='"DOWNSP"' -->
+ <!-- AWP_In_Variable Name ='"Data_block_1".LMhigh' -->
+<!-- AWP_In_Variable Name ='"Data_block_1".LMlow' -->
+
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G1 Hot Air Process</title>
+    <link href="CSS/styleG1.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Display Panel -->
+
+    <h1 style="color: white;">G1 Hot Air Process</h1>
+
+    <div class="display-panel">
+        <!-- PV Section -->
+        <div class="vertical-bar-container">
+            <label for="pv">PV</label>
+            <div class="vertical-bar" id="pv-bar">
+                <div class="fill" id="pv-fill"></div>
+            </div>
+            <form>
+                <div class="PV" ></div>
+            </form>
+        </div>
+
+        <!-- SP Section -->
+        <div class="vertical-bar-container">
+            <label for="sp">SP</label>
+            <div class="vertical-bar" id="sp-bar">
+                <div class="fill" id="sp-fill"></div>
+            </div>
+            <div class="input-panel">
+                <form>
+                    <div class="SP"></div>
+                    <input type="text" name='"Data_block_1".Setpoint' value=':="Data_block_1".Setpoint:' />
+                </form>
+                
+                
+            </div>
+        </div>
+
+        <!-- CO Section -->
+        <div class="vertical-bar-container">
+            <label for="co">CO</label>
+            <div class="vertical-bar" id="co-bar">
+                <div class="fill" id="co-fill"></div>
+            </div>
+            <div class="input-panel">
+                <form>
+                    <div class="CO"></div>
+                    <input type="text" id="co" name='"Data_block_1".CO' value=':="Data_block_1".CO:' />
+                </form>
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- PID Parameters -->
+    <div class="PID-Parameters">
+        <div class="display-panel">
+            <div class="form-group">
+                <label for="kp">Kp</label>
+                <form>
+                    <input type="text" name='"Data_block_1".Kp' value=':="Data_block_1".Kp:'>
+                </form>
+            </div>
+            <div class="form-group">
+                <label for="ti">Ti</label>
+                <form>
+                    <input type="text" name='"Data_block_1".Tiii' value=':="Data_block_1".Tiii:'>
+                </form>
+            </div>
+            <div class="form-group">
+                <label for="Td">Td</label>
+                <form>
+                    <input type="text" name='"Data_block_1".Tddd' value=':="Data_block_1".Tddd:'>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Control Buttons-->
+    <div class="button-group">
+        <form>
+            <input type="hidden" name='"hmimanon"' value="1">
+            <button onclick="changeMode('Manual')">MANUAL</button>
+        </form>
+        <form>
+            <input type="hidden" name='"hmimanon"' value="0">
+            <button onclick="changeMode('Auto')">AUTO</button>
+        </form>
+
+    <button onclick="reset()">Reset</button>
+    <div class="Reset Hmi" style="display: none;" type="hidden">Reset Hmi</div>
+</div>
+
+    <div id="modeIndicator">
+         <p>Current Mode: <span id="current-mode">manual</span>
+        <span id="status-indicator" class="status-indicator manual-mode"></span></p>
+    </div>
+
+    <!-- Exit Button -->
+<div class="ExitButton">
+    <button onclick="window.open('', '_self', ''); window.close();">Exit</button>
+    <p>LMhigh</p>
+    <form>
+        <input type="text" name='"Data_block_1".HighH' value=':="Data_block_1".HighH:' />
+        <div class="TempH"></div>
+    </form>
+
+    <p>LMlow</p>
+    <form>
+        <input type="text" name='"Data_block_1".LowH' value=':="Data_block_1".LowH:' />
+        <div class="TempL"></div>
+    </form>
+
+
+    <div class="led-panel">
+        <div>
+            <div id="high-warning-led" class="led"></div>
+        </div>
+        <div>
+            <div id="low-warning-led" class="led"></div>
+        </div>
+    </div>
+</div>
+    <script src="jLib/jquery-3.6.0.min.js"></script>
+    <script src="./Data/JS/datamanage.js"></script>
+</body>
+
+</html>
